@@ -17,9 +17,8 @@ int main()
 
     char ar_nm[30], bk_nm[30];
 
-    // Keep the track of the number of
-    // of books available in the library
-    int i, input, count;
+    // Keep the track of the number of books available in the library
+    int i, input = 0, count = 0;
 
     while (input != 5)
     {
@@ -42,22 +41,27 @@ int main()
         switch (input)
         {
 
-        // add book
+            // add book
         case 1:
+            if (count < 100)
+            {
+                printf("Enter book name = ");
+                scanf("%s", lib[count].book_name);
 
-            printf("Enter book name = ");
-            scanf("%s", lib[i].book_name);
+                printf("Enter author name = ");
+                scanf("%s", lib[count].author);
 
-            printf("Enter author name = ");
-            scanf("%s", lib[i].author);
+                printf("Enter pages = ");
+                scanf("%d", &lib[count].pages);
 
-            printf("Enter pages = ");
-            scanf("%d", &lib[i].pages);
-
-            printf("Enter price = ");
-            scanf("%f", &lib[i].price);
-            count++;
-
+                printf("Enter price = ");
+                scanf("%f", &lib[count].price);
+                count++;
+            }
+            else
+            {
+                printf("Library is full. Cannot add more books.\n");
+            }
             break;
 
         // Print book information
@@ -66,13 +70,13 @@ int main()
 
             for (i = 0; i < count; i++)
             {
-                printf("book name = %s", lib[i].book_name);
+                printf("book name = %s \n", lib[i].book_name);
 
-                printf("\t author name =  %s", lib[i].author);
+                printf("\t author name =  %s \n", lib[i].author);
 
-                printf("\t pages = %d", lib[i].pages);
+                printf("\t pages = %d \n", lib[i].pages);
 
-                printf("\t price = %f", lib[i].price);
+                printf("\t price = %f \n", lib[i].price);
             }
             break;
 
@@ -83,7 +87,7 @@ int main()
             for (i = 0; i < count; i++)
             {
                 if (strcmp(ar_nm, lib[i].author) == 0)
-                    printf("%s %s %d %f",
+                    printf("%s %s %d %f \n",
                            lib[i].book_name,
                            lib[i].author,
                            lib[i].pages,
